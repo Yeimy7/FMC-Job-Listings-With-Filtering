@@ -11,13 +11,14 @@ import shortly from './images/shortly.svg';
 import insure from './images/insure.svg';
 import eyecam from './images/eyecam-co.svg';
 import air from './images/the-air-filter-company.svg';
+import { useEffect, useState } from 'react';
 
 // import {ReactComponent as photosnap} from './images/photosnap.svg'
 
 function App() {
-
   const cards = [
     {
+      uid: 11,
       logo: photosnap,
       name: 'Photosnap',
       new_ad: true,
@@ -30,6 +31,7 @@ function App() {
     }
     ,
     {
+      uid: 22,
       logo: manage,
       name: 'Manage',
       new_ad: true,
@@ -41,6 +43,7 @@ function App() {
       tags: ['Fullstack', 'Midweight', 'Python', 'React']
     },
     {
+      uid: 33,
       logo: account,
       name: 'Account',
       new_ad: true,
@@ -52,6 +55,7 @@ function App() {
       tags: ['Frontend', 'Junior', 'JavaScript', 'React', 'Sass']
     },
     {
+      uid: 44,
       logo: myhome,
       name: 'MyHome',
       new_ad: false,
@@ -63,6 +67,7 @@ function App() {
       tags: ['Frontend', 'Junior', 'CSS', 'JavaScript']
     },
     {
+      uid: 55,
       logo: loop,
       name: 'Loop Studios',
       new_ad: false,
@@ -74,6 +79,7 @@ function App() {
       tags: ['Fullstack', 'Midweight', 'JavaScript', 'Ruby', 'Sass']
     },
     {
+      uid: 66,
       logo: faceit,
       name: 'FaceIt',
       new_ad: false,
@@ -85,6 +91,7 @@ function App() {
       tags: ['Backend', 'Junior', 'Ruby', 'RoR']
     },
     {
+      uid: 77,
       logo: shortly,
       name: 'Shortly',
       new_ad: false,
@@ -96,6 +103,7 @@ function App() {
       tags: ['Frontend', 'Junior', 'HTML', 'JavaScript', 'Sass']
     },
     {
+      uid: 88,
       logo: insure,
       name: 'Insure',
       new_ad: false,
@@ -107,6 +115,7 @@ function App() {
       tags: ['Frontend', 'Junior', 'JavaScript', 'Vue', 'Sass']
     },
     {
+      uid: 99,
       logo: eyecam,
       name: 'Eyecam Co.',
       new_ad: false,
@@ -118,6 +127,7 @@ function App() {
       tags: ['JavaScript', 'Python', 'Django']
     },
     {
+      uid: 1010,
       logo: air,
       name: 'The Air Filter Company',
       new_ad: false,
@@ -130,14 +140,43 @@ function App() {
     },
 
   ]
+
+  const [tab, setTab] = useState([]);
+  const [card, setCard] = useState(cards)
+
+  useEffect(() => {
+    if (tab.length > 0) {
+      setCard(cards.filter((elem) => {
+        let cardd = elem.tags
+        let c = 0
+        for (let i = 0; i < tab.length; i++) {
+          if (cardd.find(e => e === tab[i])) {
+            c++
+          }
+        }
+        if (c === tab.length) {
+          return true
+        }
+        else {
+          return false
+        }
+      }))
+    }
+    else {
+      setCard(cards)
+    }
+     // eslint-disable-next-line
+  }, [tab])
   return (
     <div className="container">
       <header className="header"></header>
       <section className="wrap">
-        <Search />
         {
-          cards.map((e, index) => (
-            <Card key={index} logo={e.logo} name={e.name} new_ad={e.new_ad} featured={e.featured} training={e.training} day={e.day} schedule={e.schedule} site={e.site} tags={e.tags} />
+          tab.length !== 0 && <Search tab={tab} setTab={setTab} />
+        }
+        {
+          card.map((e) => (
+            <Card tab={tab} setTab={setTab} key={e.uid} card={e} />
           ))
         }
       </section>

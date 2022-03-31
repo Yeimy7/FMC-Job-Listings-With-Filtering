@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import { ReactComponent as Photosnap } from '../images/photosnap.svg'
 import '../style/card.css'
 
@@ -12,7 +12,14 @@ import '../style/card.css'
 //       site: 'Worldwide',
 //       tags: ['Frontend', 'Junior', 'JavaScript', 'React', 'Sass']
 
-export const Card = ({ logo, name, new_ad, featured, training, day, schedule, site, tags }) => {
+export const Card = ({ tab, setTab, card }) => {
+    const { logo, name, new_ad, featured, training, day, schedule, site, tags } = card
+
+    const handleTags = (tag) => {
+        if (tab.indexOf(tag) <= -1) {
+            setTab([...tab, tag])
+        }
+    }
     return (
         <section className={`card ${featured ? 'card--sale' : ''}`}>
             <section className="card__logo">
@@ -35,8 +42,8 @@ export const Card = ({ logo, name, new_ad, featured, training, day, schedule, si
             </header>
             <div className="card__filters">
                 {
-                    tags.map((element,i) => (
-                        <span key={Math.floor(Math.random() * (1000-100)+100)} className="tag tag--card">{element}</span>
+                    tags.map((element, i) => (
+                        <span key={i + ''.concat(String(Math.floor(Math.random() * (1000 - 100) + 100)))} className="tag tag--card" onClick={() => handleTags(element)}>{element}</span>
                     ))
                 }
             </div>

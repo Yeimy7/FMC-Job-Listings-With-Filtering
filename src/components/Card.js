@@ -1,16 +1,5 @@
-import React, { useEffect } from 'react'
-// import { ReactComponent as Photosnap } from '../images/photosnap.svg'
+import React from 'react'
 import '../style/card.css'
-
-// logo: air,
-//       name: 'The Air Filter Company',
-//       new: false,
-//       featured: false,
-//       training: 'Front-end Developer',
-//       day: '1mo ago',
-//       schedule: 'Part time',
-//       site: 'Worldwide',
-//       tags: ['Frontend', 'Junior', 'JavaScript', 'React', 'Sass']
 
 export const Card = ({ tab, setTab, card }) => {
     const { logo, name, new_ad, featured, training, day, schedule, site, tags } = card
@@ -22,6 +11,7 @@ export const Card = ({ tab, setTab, card }) => {
     }
     return (
         <section className={`card ${featured ? 'card--sale' : ''}`}>
+            <div className="card__wrap">
             <section className="card__logo">
                 <img className="card__logo__image" src={logo} alt="logo-card" />
             </section>
@@ -40,6 +30,7 @@ export const Card = ({ tab, setTab, card }) => {
                     <span className='description'>{site}</span>
                 </div>
             </header>
+            </div>
             <div className="card__filters">
                 {
                     tags.map((element, i) => (

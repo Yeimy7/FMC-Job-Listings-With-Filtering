@@ -1,5 +1,6 @@
 {
-  "name": "job-listing-challenge",
+  "homepage": "https://yeimy7.github.io/FMC-Job-Listings-With-Filtering/",
+  "name": "static-job-listings-challenge",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

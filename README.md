@@ -8,15 +8,15 @@ This is a solution to the [Job listings with filtering challenge on Frontend Men
 ### Screenshot
 
 # Desktop Version
-![desktop-design](https://raw.githubusercontent.com/Yeimy7/master/static-job-listings-master/assets/desktop.jpg)
+![desktop-design](https://raw.githubusercontent.com/Yeimy7/FMC-Job-Listings-With-Filtering/master/assets/desktop.jpg)
 
 # Mobile Version
-![mobile-design](https://raw.githubusercontent.com/Yeimy7/master/static-job-listings-master/assets/mobile.jpg)
+![mobile-design](https://raw.githubusercontent.com/Yeimy7/FMC-Job-Listings-With-Filtering/master/assets/mobile.jpg)
 
 
 ### Links
 
-- Live Site URL: https://yeimy7.github.io/static-job-listings-master/
+- Live Site URL: https://yeimy7.github.io/FMC-Job-Listings-With-Filtering/
 
 ## My process
 
